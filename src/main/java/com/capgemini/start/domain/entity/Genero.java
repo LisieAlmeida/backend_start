@@ -28,7 +28,7 @@ public class Genero {
 	private Integer id;
 	
 	@Column(name="DS_GENERO", nullable = false, length = 100)
-	private String genero;
+	private String descricao;
 	
 	@Column(name="DT_INCLUSAO", nullable = false)
 	private Date dataInclusao;

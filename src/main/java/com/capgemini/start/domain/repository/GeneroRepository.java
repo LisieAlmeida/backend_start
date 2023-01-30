@@ -9,8 +9,8 @@ import com.capgemini.start.domain.entity.Genero;
 public interface GeneroRepository extends JpaRepository<Genero, Integer> {
 	
 	
-	boolean existsByGeneroIgnoreCase(String genero);
+	boolean existsByDescricaoIgnoreCase(String descricao);
 	
-	boolean existsByIdNotAndGeneroIgnoreCase(Integer id, String genero);
+	boolean existsByIdNotAndDescricaoIgnoreCase(Integer id, String descricao);
 
 }

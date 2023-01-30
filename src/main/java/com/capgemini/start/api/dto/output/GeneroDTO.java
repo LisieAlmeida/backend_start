@@ -16,7 +16,7 @@ import lombok.Setter;
 public class GeneroDTO {
 	
 	private Integer id;
-	private String genero;
+	private String descricao;
 	private LocalDateTime dataInclusao;
 	private LocalDateTime dataAlteracao;
 

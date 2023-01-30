@@ -12,11 +12,14 @@ import com.capgemini.start.domain.repository.GeneroRepository;
 import com.capgemini.start.domain.service.exceptions.ObjectAlreadyExistsException;
 import com.capgemini.start.domain.service.exceptions.ObjectNotFoundException;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class GeneroService extends AbstractService<Genero, Integer>{
 	
 	@Autowired
-	private GeneroRepository repository;
+	private final GeneroRepository repository;
 
 	@Override
 	protected JpaRepository<Genero, Integer> getRepository() {
@@ -35,7 +38,7 @@ public class GeneroService extends AbstractService<Genero, Integer>{
 	
 	@Override
 	public Genero insert(Genero genero) {
-		if (this.repository.existsByGeneroIgnoreCase(genero.getGenero())){
+		if (this.repository.existsByDescricaoIgnoreCase(genero.getDescricao())){
 			throw new ObjectAlreadyExistsException("Já existe um gênero com esta descrição.");
 		}
 		genero.setDataInclusao(new Date());
@@ -44,8 +47,8 @@ public class GeneroService extends AbstractService<Genero, Integer>{
 	
 	@Override
 	public Genero update(Genero genero) {
-		if (this.repository.existsByIdNotAndGeneroIgnoreCase(genero.getId(), genero.getGenero())) {
-			throw new ObjectAlreadyExistsException("Já existe outro tipo com esta descrição.");
+		if (this.repository.existsByIdNotAndDescricaoIgnoreCase(genero.getId(), genero.getDescricao())) {
+			throw new ObjectAlreadyExistsException("Já existe outro gênero com esta descrição.");
 		}
 		genero.setDataAlteracao(new Date());
 		return this.repository.save(genero);
